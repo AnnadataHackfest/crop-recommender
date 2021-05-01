@@ -15,10 +15,9 @@ clf = pickle.load(open('recommender.pkl', 'rb'))
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
-        features = [request.form['a'], request.form['b'], request.form['c'], request.form['d'], request.form['e'], request.form['f'], request.form['g']]
+        features = [request.json.get('n'), request.json.get('p'), request.json.get('k'), request.json.get('temp'), request.json.get('hum'), request.json.get('ph'), request.json.get('rain')]
         for i in range(len(features)):
              features[i] = float(features[i])
-	# features = eval(request.form.values())
         print(features)
         pred = clf.predict([features])
 

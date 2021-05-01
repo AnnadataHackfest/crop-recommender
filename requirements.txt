@@ -3,3 +3,4 @@ gunicorn==19.9.0
 numpy>=1.18.5
 pandas
 scikit-learn
+flask_cors

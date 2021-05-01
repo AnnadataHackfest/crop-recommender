@@ -2,6 +2,7 @@ import pickle
 import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ classes = ['apple', 'banana', 'blackgram', 'chickpea', 'coconut', 'coffee',
 clf = pickle.load(open('recommender.pkl', 'rb'))
 
 @app.route('/predict', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def predict():
     if request.method == 'POST':
         features = [request.json.get('n'), request.json.get('p'), request.json.get('k'), request.json.get('temp'), request.json.get('hum'), request.json.get('ph'), request.json.get('rain')]

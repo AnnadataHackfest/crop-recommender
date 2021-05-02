@@ -4,3 +4,4 @@ numpy>=1.18.5
 pandas
 scikit-learn==0.22.2.post1
 flask_cors
+Cython==0.29.21
